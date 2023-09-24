@@ -8,3 +8,20 @@
 3. Language : Java 11
 4. Database Library : JPA
 5. Database Server : MySQL 8.x
+
+---
+
+## API 공통 Spec
+```
+{
+    "result" : {
+        "result_code" : "200",
+        "result_message" : "OK",
+        "result_description" : "성공",
+    },
+    "body" : {
+        ....
+        ....
+    }
+}
+````
