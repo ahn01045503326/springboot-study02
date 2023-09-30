@@ -33,3 +33,11 @@ asIterator() 메서드 : 이 열거에 포함 된 요소들을 순회 하는 Ite
 forEachRemaining(Consumer<? super E> action) : 모든 원소에 대해서 주어진 작업을 수행한다, 예외가 발생하기 전까지
 
 ---
+
+Java8에서는 Optional<T> 클래스를 도입하여 NPE를 방지할 수 있도록 도와준다. 
+
+Optional<T>는 NULL이 올 수 있는 값을 감싸는 Wrapper 클래스로, NPE가 발생하지 않도록 도와준다.
+
+---
+
+Wrapper Class 는 자바에서 사용되는 원시타입(Primitive Type)의 데이터를 서로 형 변환이 가능하도록 지원해주는 Class로써, 원시타입(Primitive Type)의 자료형들을 Class화 한것이다.
