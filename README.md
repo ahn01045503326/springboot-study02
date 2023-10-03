@@ -44,3 +44,10 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 ````
+
+## Annotation
+- @Business : 비지니스 로직
+- @Converter : 객체 변환 (requset -> entity / entity -> response)
+
+## 서비스 로직
+Controller -> BusinessService -> Service -> DB
