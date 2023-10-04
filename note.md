@@ -41,3 +41,21 @@ Optional<T>는 NULL이 올 수 있는 값을 감싸는 Wrapper 클래스로, NPE
 ---
 
 Wrapper Class 는 자바에서 사용되는 원시타입(Primitive Type)의 데이터를 서로 형 변환이 가능하도록 지원해주는 Class로써, 원시타입(Primitive Type)의 자료형들을 Class화 한것이다.
+
+---
+
+Annotation
+1. @NoArgsConstructor : 파라미터가 없는 기본 생성자를 생성
+
+2. @AllArgsConstructor : 모든 필드 값을 파라미터로 받는 생성자 생성
+
+3. @RequiredArgsConstructor : final이나 @NonNull인 필드 값만 파라미터로 받는 생성자 생성
+
+4. @Data : @Getter, @Setter, @ToString, @EqualsAndHashCode, @RequiredArgsConstructor, @Value
+
+5. @EqualsAndHashCode(callSuper = true) :
+   - HashCode : 두 객체가 같은 객체인지, 동일성(identity) 를 비교하는 연산자, 두 객체 내부 필드의 값들이 같은지 판단
+   - Object.equals() : 두 객체의 내용이 같은지, 동등성(equality) 를 비교하는 연산자
+   - CallSuper : equals와 hashCode 메소드 자동 생성 시 부모 클래스의 필드까지 감안할지 안 할지에 대해서 설정
+   - callSuper = true : 부모 클래스 필드 값들도 동일한지 체크
+   - callSuper = false (기본값) : 자신 클래스의 필드 값들만 체크
