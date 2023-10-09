@@ -36,7 +36,9 @@ forEachRemaining(Consumer<? super E> action) : 모든 원소에 대해서 주어
 
 Java8에서는 Optional<T> 클래스를 도입하여 NPE를 방지할 수 있도록 도와준다. 
 
-Optional<T>는 NULL이 올 수 있는 값을 감싸는 Wrapper 클래스로, NPE가 발생하지 않도록 도와준다.
+Optional<T>
+- NULL이 올 수 있는 값을 감싸는 Wrapper 클래스로, NPE가 발생하지 않도록 도와준다. 
+- 모든 타입의 객체를 담을 수 있는 래퍼 클래스이다.
 
 ---
 
@@ -59,3 +61,5 @@ Annotation
    - CallSuper : equals와 hashCode 메소드 자동 생성 시 부모 클래스의 필드까지 감안할지 안 할지에 대해서 설정
    - callSuper = true : 부모 클래스 필드 값들도 동일한지 체크
    - callSuper = false (기본값) : 자신 클래스의 필드 값들만 체크
+
+---
