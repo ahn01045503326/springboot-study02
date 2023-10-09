@@ -63,3 +63,56 @@ Annotation
    - callSuper = false (기본값) : 자신 클래스의 필드 값들만 체크
 
 ---
+
+@Retention(RetentionPolicy.RUNTIME)
+````
+public enum RetentionPolicy {
+    /**
+     * Annotations are to be discarded by the compiler.
+     */
+    SOURCE,
+
+    /**
+     * Annotations are to be recorded in the class file by the compiler
+     * but need not be retained by the VM at run time.  This is the default
+     * behavior.
+     */
+    CLASS,
+
+    /**
+     * Annotations are to be recorded in the class file by the compiler and
+     * retained by the VM at run time, so they may be read reflectively.
+     *
+     * @see java.lang.reflect.AnnotatedElement
+     */
+    RUNTIME
+}
+````
+- SOURCE : 어노테이션을 사실상 주석처럼 사용하는 것. 컴파일러가 컴파일할때 해당 어노테이션의 메모리를 버립니다.
+- CLASS : 컴파일러가 컴파일에서는 어노테이션의 메모리를 가져가지만 실질적으로 런타임시에는 사라지게 됩니다. 런타임시에 사라진다는 것은 리플렉션으로 선언된 어노테이션 데이터를 가져올 수 없게 됩니다. 디폴트값입니다.
+- RUNTIME : 어노테이션을 런타임시에까지 사용할 수 있습니다. JVM이 자바 바이트코드가 담긴 class 파일에서 런타임환경을 구성하고 런타임을 종료할 때까지 메모리는 살아있습니다.
+
+---
+
+@AliasFor(annotation = Service.class)
+- @AliasFor is an annotation that is used to declare aliases for annotation attributes.
+- annotation 속성에 대한 별칭을 선언하는 데 사용되는 annotation 입니다.
+
+---
+
+Spring Argument Resolver
+- Controller에 들어오는 파라미터를 가공 하거나 (ex. 암호화 된 내용 복호화), 파라미터를 추가하거나 수정해야 하는 경우에 사용한다.
+
+Spring Argument Resolver는 언제 실행되는가?
+````
+1. Client Request 요청
+2. Dispatcher Servlet에서 해당 요청을 처리
+3. Client Request에 대한 Handler Mapping
+   3-1. RequestMapping에 대한 매칭 (RequestMappingHandlerAdapter)
+   3-2. Interceptor 처리
+   3-3. Argument Resolver 처리 <– 바로 여기서 우리가 지정한 Argument Resolver 실행
+   3-4. Message Converter 처리
+4. Controller Method invoke
+````
+
+---
