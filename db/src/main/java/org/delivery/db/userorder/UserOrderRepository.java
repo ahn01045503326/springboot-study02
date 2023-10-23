@@ -1,7 +1,5 @@
 package org.delivery.db.userorder;
 
-import org.delivery.db.user.UserEntity;
-import org.delivery.db.user.enums.UserStatus;
 import org.delivery.db.userorder.enums.UserOrderStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 

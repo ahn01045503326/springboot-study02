@@ -29,4 +29,14 @@ public class UserOrderMenuService {
         return userOrderMenuRepository.findAllByUserOrderIdAndStatus(userOrderId, UserOrderMenuStatus.REGISTERED);
     }
 
+    public UserOrderMenuEntity order(
+        UserOrderMenuEntity userOrderMenuEntity
+    ) {
+        return Optional.ofNullable(userOrderMenuEntity)
+            .map(it -> {
+                it.setStatus(UserOrderMenuStatus.REGISTERED);
+                return userOrderMenuRepository.save(it);
+            })
+            .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
+    }
 }
