@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class StoreRegisterResponse {
+public class StoreResponse {
     private Long id;
     private String name;
     private String address;

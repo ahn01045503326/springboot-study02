@@ -21,6 +21,14 @@ public class UserOrderService {
 
     private final UserOrderRepository userOrderRepository;
 
+    public UserOrderEntity getUserOrderWithOutStatusWithThrow(
+        Long id,
+        Long userId
+    ) {
+        return userOrderRepository.findAllByIdAndUserId(id, userId)
+            .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
+    }
+
     public UserOrderEntity getUserOrderWithThrow(
         Long id,
         Long userId
@@ -34,7 +42,11 @@ public class UserOrderService {
     }
 
     public List<UserOrderEntity> getUserOrderList(Long userId, List<UserOrderStatus> statusList) {
-        return userOrderRepository.findAllByUserIdAndStatusInOrderByIdDesc(userId, statusList);
+        System.out.println(userId);
+        System.out.println(statusList);
+        List<UserOrderEntity> test = userOrderRepository.findAllByUserIdAndStatusInOrderByIdDesc(userId, statusList);
+        System.out.println(test);
+        return test;
     }
 
     // 현재 진행중인 내역
@@ -42,6 +54,7 @@ public class UserOrderService {
         return getUserOrderList(
             userId,
             List.of(
+                UserOrderStatus.REGISTERED,
                 UserOrderStatus.ORDER,
                 UserOrderStatus.COOKING,
                 UserOrderStatus.DELIVERY,

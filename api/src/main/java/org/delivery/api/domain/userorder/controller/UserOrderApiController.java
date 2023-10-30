@@ -6,11 +6,13 @@ import org.delivery.api.common.annotation.UserSession;
 import org.delivery.api.common.api.Api;
 import org.delivery.api.domain.user.model.User;
 import org.delivery.api.domain.userorder.business.UserOrderBusiness;
+import org.delivery.api.domain.userorder.controller.model.UserOrderDetailResponse;
 import org.delivery.api.domain.userorder.controller.model.UserOrderRequset;
 import org.delivery.api.domain.userorder.controller.model.UserOrderResponse;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -36,4 +38,42 @@ public class UserOrderApiController {
         return Api.OK(response);
     }
 
+    // 현재 진행중인 주문 건
+    @GetMapping("/current")
+    public Api<List<UserOrderDetailResponse>> current(
+        @Parameter(hidden = true)
+        @UserSession
+        User user
+    ) {
+        // TODO: 2023/10/30 임시 유저 삭제 예정
+        user.setId(0L);
+        var response = userOrderBusiness.current(user);
+        return Api.OK(response);
+    }
+
+    // 과거 주문 내역
+    @GetMapping("/history")
+    public Api<List<UserOrderDetailResponse>> history(
+        @Parameter(hidden = true)
+        @UserSession
+        User user
+    ) {
+        var response = userOrderBusiness.history(user);
+        return Api.OK(response);
+    }
+
+    // 주문 1건에 대한 내역
+    @GetMapping("/id/{orderId}")
+    public Api<UserOrderDetailResponse> read(
+        @Parameter(hidden = true)
+        @UserSession
+        User user,
+
+        @PathVariable Long orderId
+    ) {
+        // TODO: 2023/10/30 임시 유저 삭제 예정
+        user.setId(0L);
+        var response = userOrderBusiness.read(user, orderId);
+        return Api.OK(response);
+    }
 }
