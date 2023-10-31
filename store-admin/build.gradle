@@ -23,6 +23,12 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-security'
 
+    // thymeleaf
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+    // https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity5
+    implementation group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity5', version: '3.0.4.RELEASE'
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
