@@ -27,6 +27,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     implementation project(':db')
+    implementation project(':common')
 
     // jpa
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
