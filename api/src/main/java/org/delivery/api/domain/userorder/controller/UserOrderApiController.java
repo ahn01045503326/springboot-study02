@@ -31,8 +31,6 @@ public class UserOrderApiController {
         @UserSession
         User user
     ) {
-        // TODO: 2023/10/30 임시 유저 삭제 예정
-        user.setId(0L);
         var response = userOrderBusiness.userOrder(
             user,
             userOrderRequest.getBody()
@@ -47,8 +45,6 @@ public class UserOrderApiController {
         @UserSession
         User user
     ) {
-        // TODO: 2023/10/30 임시 유저 삭제 예정
-        user.setId(0L);
         var response = userOrderBusiness.current(user);
         return Api.OK(response);
     }
@@ -73,8 +69,6 @@ public class UserOrderApiController {
 
         @PathVariable Long orderId
     ) {
-        // TODO: 2023/10/30 임시 유저 삭제 예정
-        user.setId(0L);
         var response = userOrderBusiness.read(user, orderId);
         return Api.OK(response);
     }

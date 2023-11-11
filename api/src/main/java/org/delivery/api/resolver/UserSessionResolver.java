@@ -24,7 +24,8 @@ public class UserSessionResolver implements HandlerMethodArgumentResolver {
         // 지원하는 파라미터 체크 , 어노테이션 체크
 
         // 1. 어노테이션이 있는지 체크
-        var annotation = parameter.hasMethodAnnotation(UserSession.class);
+        var annotation = parameter.hasParameterAnnotation(UserSession.class);
+
         // 2. 파라미터의 타입 체크
         var parameterType = parameter.getParameterType().equals(User.class);
 
